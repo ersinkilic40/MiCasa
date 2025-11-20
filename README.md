@@ -11,4 +11,4 @@ Welkom bij ons project genaamd MiCasa, ons project gaat over het automatiseren e
 
 
 
-Gemaakt door Mohamed amin, Brian, Ersin, Mohamed-Amine, Jay en Adnan
+Gemaakt door Mohamed amin, Brian, Ersin, Mohamed-Amine, Jay en Adnan Van de klas ICT-V10
