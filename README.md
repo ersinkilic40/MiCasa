@@ -1,5 +1,6 @@
 # MiCasa
-Hoi, groetjes mohamed amin
+
+Welkom bij ons project genaamd MiCasa, ons project gaat over het automatiseren en verduurzamen van airbnb's voor de verhuurders.
 
 
 
