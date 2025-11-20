@@ -13,4 +13,4 @@ Welkom bij ons project genaamd MiCasa, ons project gaat over het automatiseren e
 
 
 
-gemaakt door Adnan, Brian, Mohammed Amin, Mohamed Amine en Jay
+Gemaakt door Mohamed amin, Ersin, Mohamed-Amine, Jay, Brian en Adnan
