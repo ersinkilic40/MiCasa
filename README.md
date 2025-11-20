@@ -13,4 +13,4 @@ chupachupppp
 
 
 
-Gemaakt door Mohamed amin, Ersin, Mohamed-Amineee, Brian, Jay en Adnan
+Gemaakt door Mohamed amin, Brian, Ersin, Mohamed-Amineee, Jay en Adnan
