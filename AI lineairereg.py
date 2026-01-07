@@ -13,7 +13,7 @@ conn = psycopg2.connect(
 )
 
 cur = conn.cursor()
-cur.execute("SELECT temper, verbruik FROM verbruik ORDER BY dag;")
+cur.execute("SELECT temper, verbruik FROM verbruik ORDER BY datum;")
 rows = cur.fetchall()
 cur.close()
 conn.close()
