@@ -71,9 +71,7 @@ def gradient_descent(X, y, m, b, lr, epochs):
         m -= lr * (dm / n)
         b -= lr * (db / n)
 
-        # Optioneel: print elke 2000 iteraties
-        if (epoch + 1) % 2000 == 0:
-            print(f"Epoch {epoch + 1}: m={m}, b={b}")
+
 
     return m, b
 
