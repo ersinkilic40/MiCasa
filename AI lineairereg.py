@@ -29,27 +29,6 @@ print("Eerste 10 datapunten (temperatuur, verbruik):")
 for i in range(10):
     print(temperatures[i], energy[i])
 
-
-
-# CORRELATIES
-
-def cor(x, y):
-    n = len(x)
-    mid_x = sum(x) / n
-    mid_y = sum(y) / n
-    teller = sum((x[i] - mid_x) * (y[i] - mid_y) for i in range(n))
-    sx = sum((xi - mid_x) ** 2 for xi in x)
-    sy = sum((yi - mid_y) ** 2 for yi in y)
-    noemer = (sx * sy) ** 0.5
-    return teller / noemer if noemer != 0 else 0.0
-
-
-dagen = list(range(1, len(energy) + 1))
-print("Correlatie temperatuur-verbruik:", cor(temperatures, energy))
-print("Correlatie dag-verbruik:", cor(dagen, energy))
-
-
-
 # LINEAIRE REGRESSIE MET GRADIENT DESCENT
 
 def predict(x, m, b):
@@ -86,18 +65,17 @@ epochs = 10000
 m, b = gradient_descent(temperatures, energy, m, b, learning_rate, epochs)
 
 
-# CONTROLE OP NEGATIEVE TREND
 
-# Als de correlatie negatief is, verwacht je een dalende lijn
-if cor(temperatures, energy) < 0 and m > 0:
-    m = -abs(m)
+
+
+
 
 print("Hellingshoek m:", m)
 print("Intercept b:", b)
 
-# ========================
+
 # GRAFIEK
-# ========================
+
 predicted = [predict(x, m, b) for x in temperatures]
 
 plt.scatter(temperatures, energy, label="Meetdata")
@@ -107,3 +85,19 @@ plt.ylabel("Energieverbruik (kWh)")
 plt.title("Lineaire regressie – temperatuur vs verbruik")
 plt.legend()
 plt.show()
+
+
+
+#  VOORSPELLING  –  interactief
+
+def voorspel_verbruik(temp_celsius):
+#Gebruikt de gevonden m en b om verbruik in kWh te ramen
+    return round(predict(temp_celsius, m, b), 2)
+
+
+try:
+    invoer = float(input("Voer de verwachte buitentemperatuur (°C) in: "))
+    verbruik_kwh = voorspel_verbruik(invoer)
+    print(f"Geschat energieverbruik: {verbruik_kwh} kWh voor die dag.")
+except ValueError:
+    print("Ongeldige invoer – gebruik een getal (bijv. -3 of 12.5)")
