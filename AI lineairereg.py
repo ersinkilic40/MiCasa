@@ -1,9 +1,9 @@
 import psycopg2
 import matplotlib.pyplot as plt
 
-# ========================
+
 # DATABASE-CONNECTIE
-# ========================
+
 conn = psycopg2.connect(
     host="20.74.85.78",
     port=5432,
@@ -18,9 +18,9 @@ rows = cur.fetchall()
 cur.close()
 conn.close()
 
-# ========================
+
 # DATA SCHEIDEN
-# ========================
+
 temperatures = [float(r[0]) for r in rows]  # feature X
 energy = [float(r[1]) for r in rows]  # target y
 
@@ -30,9 +30,9 @@ for i in range(10):
     print(temperatures[i], energy[i])
 
 
-# ========================
+
 # CORRELATIES
-# ========================
+
 def cor(x, y):
     n = len(x)
     mid_x = sum(x) / n
@@ -49,9 +49,9 @@ print("Correlatie temperatuur-verbruik:", cor(temperatures, energy))
 print("Correlatie dag-verbruik:", cor(dagen, energy))
 
 
-# ========================
+
 # LINEAIRE REGRESSIE MET GRADIENT DESCENT
-# ========================
+
 def predict(x, m, b):
     return m * x + b
 
@@ -87,9 +87,9 @@ epochs = 10000
 # Voer gradient descent uit
 m, b = gradient_descent(temperatures, energy, m, b, learning_rate, epochs)
 
-# ========================
+
 # CONTROLE OP NEGATIEVE TREND
-# ========================
+
 # Als de correlatie negatief is, verwacht je een dalende lijn
 if cor(temperatures, energy) < 0 and m > 0:
     m = -abs(m)
