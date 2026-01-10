@@ -1,0 +1,103 @@
+import psycopg2
+import matplotlib.pyplot as plt
+
+
+# DATABASE-CONNECTIE
+
+conn = psycopg2.connect(
+    host="20.74.85.78",
+    port=5432,
+    database="micasadatabase",
+    user="jay",
+    password="Micasatiel0344"
+)
+
+cur = conn.cursor()
+cur.execute("SELECT temper, verbruik FROM verbruik ORDER BY datum;")
+rows = cur.fetchall()
+cur.close()
+conn.close()
+
+
+# DATA SCHEIDEN
+
+temperatures = [float(r[0]) for r in rows]  # feature X
+energy = [float(r[1]) for r in rows]  # target y
+
+# Print de eerste 10 rijen om te controleren
+print("Eerste 10 datapunten (temperatuur, verbruik):")
+for i in range(10):
+    print(temperatures[i], energy[i])
+
+# LINEAIRE REGRESSIE MET GRADIENT DESCENT
+
+def predict(x, m, b):
+    return m * x + b
+
+
+def gradient_descent(X, y, m, b, lr, epochs):
+    n = len(X)
+
+    for epoch in range(epochs):
+        dm = 0
+        db = 0
+        for i in range(n):
+            y_pred = predict(X[i], m, b)
+            dm += -2 * X[i] * (y[i] - y_pred)
+            db += -2 * (y[i] - y_pred)
+
+        # update m en b
+        m -= lr * (dm / n)
+        b -= lr * (db / n)
+
+
+
+    return m, b
+
+
+# Startwaarden en instellingen
+m = 0
+b = 0
+learning_rate = 0.001
+epochs = 10000
+
+# Voer gradient descent uit
+m, b = gradient_descent(temperatures, energy, m, b, learning_rate, epochs)
+
+
+
+
+
+
+
+print("Hellingshoek m:", m)
+print("Intercept b:", b)
+
+
+# GRAFIEK
+
+predicted = [predict(x, m, b) for x in temperatures]
+
+plt.scatter(temperatures, energy, label="Meetdata")
+plt.plot(temperatures, predicted, color="red", label="Regressielijn")
+plt.xlabel("Temperatuur (°C)")
+plt.ylabel("Energieverbruik (kWh)")
+plt.title("Lineaire regressie – temperatuur vs verbruik")
+plt.legend()
+plt.show()
+
+
+
+#  VOORSPELLING  –  interactief
+
+def voorspel_verbruik(temp_celsius):
+#Gebruikt de gevonden m en b om verbruik in kWh te ramen
+    return round(predict(temp_celsius, m, b), 2)
+
+
+try:
+    invoer = float(input("Voer de verwachte buitentemperatuur (°C) in: "))
+    verbruik_kwh = voorspel_verbruik(invoer)
+    print(f"Geschat energieverbruik: {verbruik_kwh} kWh voor die dag.")
+except ValueError:
+    print("Ongeldige invoer – gebruik een getal (bijv. -3 of 12.5)")
