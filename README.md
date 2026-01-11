@@ -22,16 +22,11 @@ De applicatie is ontwikkeld als onderdeel van het HBO-ICT project SmartHome, waa
 
 
 
-Technologie
-
+Technologiën:
 Programmeertaal: Python
-
 GUI: Tkinter
-
 Database: PostgreSQL
-
 Platform: Desktop & Raspberry Pi
-
 Versiebeheer: GitHub (private repository)
 
 
