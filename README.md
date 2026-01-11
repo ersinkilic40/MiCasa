@@ -19,3 +19,28 @@ Het doel van Micasa is kostenbesparing, verduurzaming en comfortverhoging voor z
 
 De applicatie is ontwikkeld als onderdeel van het HBO-ICT project SmartHome, waarbij Business IT & Management, Artificial Intelligence, CSC, TI en Software Development samenkomen in één geïntegreerd eindproduct.
 
+
+
+
+Technologie
+
+Programmeertaal: Python
+
+GUI: Tkinter
+
+Database: PostgreSQL
+
+Platform: Desktop & Raspberry Pi
+
+Versiebeheer: GitHub (private repository)
+
+
+
+
+
+
+
+
+
+
+
