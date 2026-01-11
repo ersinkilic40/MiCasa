@@ -31,7 +31,26 @@ Versiebeheer: GitHub (private repository)
 
 
 
+Functionaliteiten
+'Inloggen'
 
+Bij het opstarten van de applicatie wordt een inlogscherm getoond. Alleen geautoriseerde gebruikers krijgen toegang tot het dashboard.
+
+Dashboard
+
+Na het inloggen ziet de gebruiker een centraal dashboard met:
+
+Actuele buitentemperatuur
+
+Dagelijks energieverbruik
+
+Energiekosten van vandaag
+
+Actieve slimme apparaten (zoals verwarming, verlichting)
+
+Een AI-voorspelling van het verwachte energieverbruik en de bijbehorende kosten
+
+Alle data wordt opgehaald uit de PostgreSQL-database
 
 
 
